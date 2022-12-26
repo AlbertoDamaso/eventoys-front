@@ -5,9 +5,9 @@ import { Link } from 'react-router-dom';
 function Header() {
   return (
     <header>
-      <Link className="logo" to="/">Eventoys</Link>
+      <Link className='logo' to='/'>Eventoys</Link>
       {/* <Link className="logo" to="/signin">SignIn</Link> */}
-      <Link className="signup" to="/signup">SignUp</Link>
+      <Link className='signup' to='/signup'>SignUp</Link>
     </header>
   )
 }

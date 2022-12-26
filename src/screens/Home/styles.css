@@ -1,0 +1,13 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center ;
+}
+.title {
+    margin: 20px auto;
+    color: #005EB8;
+    font-weight: bold;
+    font-family: sans-serif;
+}
+
