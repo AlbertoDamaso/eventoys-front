@@ -1,14 +1,16 @@
-import React, { useState } from 'react';
-import { useNavigate } from "react-router-dom";
+import React, { useEffect, useState } from 'react';
+import { useNavigate, useParams } from "react-router-dom";
 import axios from 'axios';
 
 import Button from '../../components/Button';
 import Title from '../../components/Title';
 import './styles.css';
 
-function SignUp() {
+function ChangePerson() {
 
   let navigate = useNavigate();
+
+  const {id}=useParams();
 
   const [user, setUser]=useState({
     name:"",
@@ -24,14 +26,26 @@ function SignUp() {
 
   const onSubmit= async(e)=>{
     e.preventDefault();
-    await axios.post("http://localhost:8080/user", user)
+    await axios.put(`http://localhost:8080/${id}`, user)
     navigate("/");
+    alert("Pessoal alterada com sucesso.")
   }
+
+  useEffect(()=>{
+    loadUsers();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  },[]);
+
+  const loadUsers = async()=>{
+    const result = await axios.get(`http://localhost:8080/${id}`);
+    setUser(result.data)
+  }
+
   return(
     <div>
       <form className='container' onSubmit={(e)=>onSubmit(e)}>
           <Title
-            title={'Incluir Pessoa'}
+            title={'Alterar Pessoa'}
           />
 
         <input
@@ -60,12 +74,12 @@ function SignUp() {
         />      
         <div className='btn'>
           <Button
-            title={"Cadastrar"}
+            title={"Alterar"}
             type="submit"
           />
           <Button
             title={"Cancelar"}
-            type="submit"
+            onClick={() => navigate("/")}
           />   
         </div>             
       </form>
@@ -73,4 +87,4 @@ function SignUp() {
   )
 }
 
-export default SignUp;
+export default ChangePerson;

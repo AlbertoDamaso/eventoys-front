@@ -7,7 +7,7 @@ function Header() {
     <header>
       <Link className='logo' to='/'>Eventoys</Link>
       {/* <Link className="logo" to="/signin">SignIn</Link> */}
-      <Link className='signup' to='/signup'>SignUp</Link>
+      <Link className='person' to='/person'>Registrar Pessoa</Link>
     </header>
   )
 }
